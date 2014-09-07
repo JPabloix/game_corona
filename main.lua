@@ -32,7 +32,7 @@ display.currentStage:addEventListener( "tap", screenTap )
 -- timer.performWithDelay( 1500, randomBall, 12 )
 
 stage = {}
-stage.block = {{x=100, y=300},{x=150, y=300},{x=200, y=350},{x=150, y=350}}
+stage.block = {{x=100, y=300},{x=150, y=300},{x=200, y=350},{x=150, y=350},{x=50, y=100},{x=130, y=150},{x=300, y=350},{x=100, y=350}}
 
 for key,value in pairs(stage.block) do
     block_module.init(value)
