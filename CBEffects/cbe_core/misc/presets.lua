@@ -103,7 +103,8 @@ presets.vents = {
 		positionType = "atPoint",
 		build = function() local size = math_random(50, 150) return display_newImageRect("CBEffects/textures/glow.png", size, size) end,
 		color = {{0, 0, 1}},
-		emitDelay = 30,
+		emitDelay = 0,
+		onEmitEnd = function(v) v.stop() end,
 		perEmit = 3,
 		inTime = 500,
 		outTime = 500,
@@ -112,9 +113,9 @@ presets.vents = {
 		propertyTable = {blendMode = "add"},
 		physics = {
 			angles = {{80, 100}},
-			scaleRateX = 0.98,
-			scaleRateY = 0.98,
-			gravityY = -0.05
+			scaleRateX = 0.85,
+			scaleRateY = 0.85,
+			gravityY = -0.03
 		}
 	},
 

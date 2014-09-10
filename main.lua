@@ -9,31 +9,34 @@ local physics = require("physics")
 local CBE = require("CBEffects.Library")
 local ball_module = require('modules.ball_module')
 local block_module = require('modules.block_module')
+local stage_module = require('modules.stage_module')
+local weapon_module = require('modules.weapon_module')
 
 CBE.listPresets()
 physics.start()
-physics.setScale( 60 )
+physics.setGravity( 0, 9 )
+physics.setScale( 100 )
 display.setStatusBar( display.HiddenStatusBar )
 
 
-local ground = display.newImage( "img/ground.png", centerX, _H, true )
-ground.name = 'suelo xD'
-physics.addBody( ground, "static", { friction=0.5 } )
+
+-- Call the above function 12 times
+-- timer.performWithDelay( 1500, randomBall, 12 )
+
+-- Inicializacion de modulos:
+
+stage_module.draw(1, block_module)
+weapon_module.init()
 
 
+-- eventos:
 
 local screenTap = function(event)
+    weapon_module.changeAnglePoint(event.x, event.y)
     ball_module.init({x = event.x, y = event.y})
 end
 
 display.currentStage:addEventListener( "tap", screenTap )
 
--- Call the above function 12 times
--- timer.performWithDelay( 1500, randomBall, 12 )
 
-stage = {}
-stage.block = {{x=100, y=300},{x=150, y=300},{x=200, y=350},{x=150, y=350},{x=50, y=100},{x=130, y=150},{x=300, y=350},{x=100, y=350}}
 
-for key,value in pairs(stage.block) do
-    block_module.init(value)
-end
